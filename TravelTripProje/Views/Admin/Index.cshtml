@@ -1,0 +1,21 @@
+@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html class="light" lang="en">
+@await Component.InvokeAsync("_AdminHeadComponentPartial")
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen">
+<div class="flex h-screen overflow-hidden">
+    @await Component.InvokeAsync("_AdminSidebarComponentPartial")
+    <main class="flex-1 flex flex-col overflow-y-auto">
+        @await Component.InvokeAsync("_AdminHeaderComponentPartial")
+        <div class="p-8">
+           @RenderBody()
+        </div>
+    </main>
+</div>
+</body>
+</html>

@@ -1,0 +1,142 @@
+@model List<TravelTripProje.Entities.Commant>
+
+@{
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="mb-8">
+    <div class="flex flex-col gap-1">
+        <h2 class="text-slate-900 dark:text-slate-50 text-3xl font-black tracking-tight">Yorumlar</h2>
+        <p class="text-slate-500 dark:text-slate-400 text-sm">Tüm blog yorumlarını buradan yönetebilirsiniz</p>
+    </div>
+</div>
+
+<!-- Stats Cards -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+    <div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+        <div class="flex items-center gap-4">
+            <div class="p-3 bg-primary/10 dark:bg-primary/20 rounded-lg">
+                <span class="material-symbols-outlined text-primary text-2xl">comment</span>
+            </div>
+            <div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Toplam Yorum</p>
+                <p class="text-2xl font-black text-slate-900 dark:text-slate-50">@Model.Count</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+        <div class="flex items-center gap-4">
+            <div class="p-3 bg-blue-500/10 dark:bg-blue-500/20 rounded-lg">
+                <span class="material-symbols-outlined text-blue-500 text-2xl">article</span>
+            </div>
+            <div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Farklı Blog</p>
+                <p class="text-2xl font-black text-slate-900 dark:text-slate-50">@Model.Select(c => c.BlogId).Distinct().Count()</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6 shadow-sm">
+        <div class="flex items-center gap-4">
+            <div class="p-3 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-lg">
+                <span class="material-symbols-outlined text-emerald-500 text-2xl">person</span>
+            </div>
+            <div>
+                <p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Farklı Kullanıcı</p>
+                <p class="text-2xl font-black text-slate-900 dark:text-slate-50">@Model.Select(c => c.Mail).Distinct().Count()</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Table Card Container -->
+<div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+            <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-20">ID</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Kullanıcı</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">E-posta</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Yorum</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Blog</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right">İşlemler</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+            @if (Model.Any())
+            {
+                @foreach (var comment in Model)
+                {
+                    <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+                        <td class="px-6 py-4 text-sm font-bold text-slate-500 dark:text-slate-400">@comment.CommantId</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center text-white font-bold text-sm">
+                                    @comment.UserName.Substring(0, 1).ToUpper()
+                                </div>
+                                <span class="text-sm font-semibold text-slate-900 dark:text-slate-50">@comment.UserName</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
+                            <div class="flex items-center gap-2">
+                                <span class="material-symbols-outlined text-slate-400 text-[16px]">mail</span>
+                                @comment.Mail
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <p class="text-sm text-slate-700 dark:text-slate-300 max-w-md line-clamp-2">
+                                @comment.CommantText
+                            </p>
+                        </td>
+                        <td class="px-6 py-4">
+                            @if (comment.Blog != null)
+                            {
+                                <div class="flex items-center gap-2">
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">
+                                        <span class="material-symbols-outlined text-[14px] mr-1">article</span>
+                                        @comment.Blog.Title
+                                    </span>
+                                </div>
+                            }
+                            else
+                            {
+                                <span class="text-xs text-slate-400">Blog ID: @comment.BlogId</span>
+                            }
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <div class="flex justify-end gap-2">
+                                <a href="~/Commant/Delete/@comment.CommantId" class="text-rose-500 hover:text-rose-600 text-sm font-bold flex items-center gap-1 transition-colors">
+                                    <span class="material-symbols-outlined text-[16px]">delete</span>
+                                    Sil
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="6" class="px-6 py-12 text-center">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-16 h-16 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+                                <span class="material-symbols-outlined text-slate-400 text-4xl">comments_disabled</span>
+                            </div>
+                            <p class="text-slate-500 dark:text-slate-400 font-medium">Henüz yorum bulunmuyor</p>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Model.Any())
+{
+    <div class="mt-4 text-sm text-slate-500 dark:text-slate-400">
+        Toplam <span class="font-bold text-slate-900 dark:text-slate-50">@Model.Count</span> yorum görüntüleniyor
+    </div>
+}

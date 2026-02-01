@@ -1,0 +1,8 @@
+@model List<TravelTripProje.Entities.Blog>
+<ul class="list list-pad">
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        <li class="list-bg"><span>@{ i++;} @i.</span><a href="~/Default/BlogDetail/@item.BlogId">@item.Title</a></li>
+    }
+</ul>

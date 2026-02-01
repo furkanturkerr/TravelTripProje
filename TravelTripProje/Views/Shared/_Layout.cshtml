@@ -41,17 +41,17 @@
 <div class="header-bottom">
 	<div class="wrap">
 		<ul id="nav">
-			<li><a href="index.html">Home</a></li>
-			<li><a class="hsubs" href="about.html">About</a></li>
-			<li><a class="hsubs" href="destinations.html">Destinations</a>
+			<li><a asp-action="Index" asp-controller="Default">Anasayfa</a></li>
+			<li><a class="hsubs" asp-action="About" asp-controller="Default">Hakkımızda</a></li>
+			<li><a class="hsubs" asp-action="About" asp-controller="Default">Rehber</a>
 				<ul class="subs">
-					<li><a href="#">Hotels</a></li>
-					<li><a href="#">Restaurants</a></li>
-					<li><a href="#">Beach Resorts</a></li>
+					<li><a href="#">Oteller</a></li>
+					<li><a href="#">Restoranlar</a></li>
+					<li><a href="#">Müzler</a></li>
 				</ul>
 			</li>
-			<li><a class="hsubs" href="destinations.html">Free Travel Guides</a></li>
-			<li><a href="contact.html">Contact</a></li>
+			<li><a class="hsubs" asp-controller="Default" asp-action="Blog">Bloğum</a></li>
+			<li><a href="contact.html">İletişim</a></li>
 		</ul>
 	</div>
 </div>

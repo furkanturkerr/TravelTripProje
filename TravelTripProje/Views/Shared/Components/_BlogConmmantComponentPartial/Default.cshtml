@@ -1,0 +1,12 @@
+@model dynamic
+
+<div class="content-form">
+    <h3>Yorum Yap</h3>
+    <form method="post" asp-controller="Default" asp-action="BlogComment">
+        <input type="hidden" name="BlogId" value="@ViewBag.blogId" />
+        <input type="text" name="UserName" placeholder="Kullanıcı Adı" required/>
+        <input type="text" name="Mail" placeholder="Email" required/>
+        <textarea placeholder="Mesaj" name="CommantText"></textarea>
+        <input type="submit" value="Gönder"/>
+    </form>
+</div>

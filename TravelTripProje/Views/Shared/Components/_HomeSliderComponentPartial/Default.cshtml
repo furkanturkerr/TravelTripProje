@@ -1,0 +1,13 @@
+@model List<TravelTripProje.Entities.Slider>
+
+<div class="header_bottom_right_images">
+
+    <div class="slider">
+        <ul class="rslides" id="slider1">
+            @foreach (var item in Model)
+            {
+                <li><img src="@item.ImgUrl" alt=""></li>
+            }
+        </ul>
+    </div>
+</div>

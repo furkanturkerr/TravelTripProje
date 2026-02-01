@@ -1,0 +1,67 @@
+@model List<TravelTripProje.Entities.Blog>
+
+@{
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="mb-8">
+    <div class="flex flex-col gap-1">
+        <h2 class="text-slate-900 dark:text-slate-50 text-3xl font-black tracking-tight">Blog Yazıları</h2>
+    </div>
+</div>
+
+<!-- Table Card Container -->
+<div class="bg-white dark:bg-background-dark rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+            <thead>
+            <tr class="bg-slate-50 dark:bg-slate-800/50 border-b border-slate-200 dark:border-slate-800">
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 w-20">ID</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Image</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Title</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Description</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Date</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Comments</th>
+                <th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 text-right">Actions</th>
+            </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+            @foreach (var blog in Model)
+            {
+                <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors group">
+                    <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400">@blog.BlogId</td>
+                    <td class="px-6 py-4">
+                        <img src="@blog.BlogImage" alt="@blog.Title" class="w-20 h-14 object-cover rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                    </td>
+                    <td class="px-6 py-4 text-sm font-semibold text-slate-900 dark:text-slate-50 max-w-xs">@blog.Title</td>
+                    <td class="px-6 py-4 text-sm text-slate-600 dark:text-slate-400 max-w-md truncate">@blog.Description</td>
+                    <td class="px-6 py-4 text-sm text-slate-500 dark:text-slate-400 whitespace-nowrap">@blog.Date.ToString("dd MMM yyyy")</td>
+                    <td class="px-6 py-4 text-center">
+                        <span class="inline-flex items-center justify-center w-8 h-8 rounded-full bg-primary/10 text-primary dark:bg-primary/20 text-xs font-bold">
+                            @(blog.Commant?.Count ?? 0)
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                        <div class="flex justify-end gap-2">
+                            <a href="~/Blog/Update/@blog.BlogId" class="text-primary hover:text-primary/80 text-sm font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[16px]">edit</span>
+                                Güncelle
+                            </a>
+                            <a href="~/Blog/Delete/@blog.BlogId"  class="text-rose-500 hover:text-rose-600 text-sm font-bold flex items-center gap-1">
+                                <span class="material-symbols-outlined text-[16px]">delete</span>
+                                Sil
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+
+</div>
+<br/>
+<a href="~/Blog/Create" class="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-all shadow-sm hover:shadow-md font-bold">
+    <span class="material-symbols-outlined text-[20px]">add_circle</span>
+    Yeni Blog Ekle
+</a>
