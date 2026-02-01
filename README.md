@@ -55,11 +55,17 @@ Bu proje, **Murat Yücedağ**’ın YouTube kanalında paylaştığı **“Asp.N
 # 🛠 **Admin Panel**
 
 <img width="1469" height="831" alt="image" src="https://github.com/user-attachments/assets/4352a396-a0a7-4b3e-aa11-58a70a2af954" />
+<img width="1466" height="830" alt="image" src="https://github.com/user-attachments/assets/6628aff3-d70a-44e1-8b8d-5ddc958523dc" />
 <img width="1469" height="834" alt="image" src="https://github.com/user-attachments/assets/8969e936-825f-4bbe-8ddd-5888d8d405c4" />
 <img width="1469" height="828" alt="image" src="https://github.com/user-attachments/assets/45aa7a43-01d2-469e-a241-ac3cb5288930" />
 <img width="1469" height="830" alt="image" src="https://github.com/user-attachments/assets/c76215de-2a1e-41ca-aa61-ac63cf11b52b" />
 
 --- 
+
+<img width="1469" height="830" alt="image" src="https://github.com/user-attachments/assets/e9a3f815-3bb7-42f2-a85b-f98b5b9e3167" />
+<img width="1466" height="828" alt="image" src="https://github.com/user-attachments/assets/7f2c3807-ee1b-4980-9c7d-44a16b97c396" />
+
+---
 
 <img width="2940" height="3284" alt="image" src="https://github.com/user-attachments/assets/ef5f4473-6099-4c94-ad1d-3575a0ec94ef" />
 <img width="2940" height="5786" alt="image" src="https://github.com/user-attachments/assets/a1764af9-25da-4bc3-bb25-31a100389167" />
